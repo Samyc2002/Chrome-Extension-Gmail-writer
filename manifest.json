@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+
+  "name": "Email Writer",
+  "description": "This extension changes the font style in a specific page.",
+  "version": "1.0",
+  "icons": {
+    "128": "image128.png",
+    "48": "image48.png",
+    "16": "image16.png"
+  },
+
+  "page_action": {
+    "default_icon": "image16.png",
+    "default_popup": "popup.html",
+    "default_title": "Email Writer"
+  },
+
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
+  },
+
+  "content_scripts":[
+    {
+      "matches": ["https://mail.google.com/*"],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "js": ["content.js", "jquery-3.6.0.min.js"]
+    }
+  ],
+
+  "permissions": [
+    "tabs",
+    "https://mail.google.com/*"
+  ]
+}
